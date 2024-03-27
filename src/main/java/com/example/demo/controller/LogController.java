@@ -16,12 +16,12 @@ public class LogController {
  
     @Autowired
     private LogService service;
- 
-    @GetMapping("/")
-    public String api()
-    {
-        return "index";
+
+    @GetMapping("/register")
+    public String register1() {
+        return "register";
     }
+
 
     @PostMapping("/log")
     public String login(@ModelAttribute("user") Login user) {
