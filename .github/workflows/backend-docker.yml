@@ -37,7 +37,7 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.snowvita }}
+          username: snowvita
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       # 5️⃣ Build Docker image
