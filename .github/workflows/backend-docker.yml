@@ -39,6 +39,7 @@ jobs:
         with:
           username: snowvita
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      # given edit permissions
 
       # 5️⃣ Build Docker image
       - name: Build Docker image
