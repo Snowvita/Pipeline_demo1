@@ -22,25 +22,25 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      # 2️⃣ Set up Java
+      # 2️⃣ Set up Java JDK
       - name: Set up JDK
         uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 21
 
-      # 3️⃣ Build Spring Boot JAR (Maven)
-      - name: Build with Maven
-        run: mvn clean
+      # 3️⃣ Build Spring Boot JAR
+      - name: Build Spring Boot JAR
+        run: mvn clean package -DskipTests
 
-      # 4️⃣ Log in to Docker Hub
+      # 4️⃣ Log in to Docker Hub (using secrets)
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.snowvita }}
-          password: ${{ secrets.dckr_pat__aYTy_pL4JXZPd9N9g2Y9KjuCeo }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      # 5️⃣ Build and tag Docker image
+      # 5️⃣ Build Docker image
       - name: Build Docker image
         run: docker build -t $IMAGE_NAME:${{ github.sha }} -t $IMAGE_NAME:latest .
 
